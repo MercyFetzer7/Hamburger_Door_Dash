@@ -1,4 +1,4 @@
-# NAMES: 
+# NAMES: Mercy Fetzer, Nathan Blickenstaff, Luke Farley, Isabelle Turner, Luke Kehl
 # A program that tracks exactly how many hamburgers each customer eats.
 # Includes Order, Person, Customer (inherits from Person) classes
 # Program includes a dictionary 
