@@ -28,17 +28,13 @@ class Customer(Person):
         self.order = Order()
 
 
-customer = {}
-
+dictCustomer = {}
 queueCustomers = []
 
-queueCustomers.append(Customer)
+for customer in range(100):
+    customer = Customer()
+    queueCustomers.append(customer)
 
-for iCount in range(0, len(queueCustomers)):
-    print(queueCustomers[iCount])
+    if customer.customer_name in customer.dictCustomer:
+        customer.dictCustomer[customer.customer_name] += customer.order.burger_count
 
-for iCount in range(1, len(queueCustomers) + 1):
-    queueCustomers.pop(0)
-
-    for iCount in range(0, len(queueCustomers)):
-        print(queueCustomers[iCount])
