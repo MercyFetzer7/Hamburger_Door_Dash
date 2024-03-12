@@ -17,7 +17,7 @@ class Person():
     def __init__(self):
         self.customer_name = self.randomName()
 
-    def randomName(): # outputs a random name for  the lstCustomers list
+    def randomName(): # outputs a random name for  the lsCustomers list
         lsCustomers = ["Jefe", "El Guapo", "Lucky Day", "Ned Nederlander", "Dusty Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman", "Singing Bush"]
         return random.choice(lsCustomers)
     
