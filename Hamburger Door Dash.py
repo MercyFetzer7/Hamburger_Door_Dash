@@ -39,4 +39,6 @@ for customer in range(100):
         customer.dictCustomer[customer.customer_name] += customer.order.burger_count
     else:
         customer.dictCustomer[customer.customer_name] = customer.order.burger_count
+        
+listSortedCustomers = sorted(dictCustomers.items(), key=lambda x: x[1], reverse=True) 
 
