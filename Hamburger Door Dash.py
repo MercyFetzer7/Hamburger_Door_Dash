@@ -37,4 +37,6 @@ for customer in range(100):
 
     if customer.customer_name in customer.dictCustomer:
         customer.dictCustomer[customer.customer_name] += customer.order.burger_count
+    else:
+        customer.dictCustomer[customer.customer_name] = customer.order.burger_count
 
