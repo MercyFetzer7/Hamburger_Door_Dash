@@ -27,6 +27,9 @@ class Customer(Person):
         super.__init__()
         self.order = Order()
 
+
+customer = {}
+
 queueCustomers = []
 
 queueCustomers.append(Customer)
