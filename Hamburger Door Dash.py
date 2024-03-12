@@ -9,7 +9,7 @@ class Order():
     def __init__(self):
         self.burger_count = self.randomBurgers()
 
-    def randomBurgers():
+    def randomBurgers(): # outputs a random integer from 1 - 20
         return random.randint(1, 20)
       
     
@@ -17,7 +17,7 @@ class Person():
     def __init__(self):
         self.customer_name = self.randomName()
 
-    def randomName():
+    def randomName(): # outputs a random name for  the lstCustomers list
         lsCustomers = ["Jefe", "El Guapo", "Lucky Day", "Ned Nederlander", "Dusty Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman", "Singing Bush"]
         return random.choice(lsCustomers)
     
