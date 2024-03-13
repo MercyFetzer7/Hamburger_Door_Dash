@@ -53,4 +53,4 @@ print()
 #for loop for printing each customer and the total amount of burgers ordered.
 for customer in queueCustomers:
 
-    print(customer[0] + "   " + str(customer[1]) + "\n")
+    print(customer[0].ljust(19) + "   " + str(customer[1]) + "\n")
