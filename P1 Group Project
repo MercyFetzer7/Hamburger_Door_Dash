@@ -4,6 +4,7 @@
 # Create a new workbook, sheets for the different classes. 
 # Filter through the unorganized excel file
 # Display the information on excel in an neat and organized order
+
 import os
 import platform
 
@@ -35,7 +36,6 @@ newBook = Workbook()
 newBook.remove(newBook["Sheet"])
 
 #Read the file
-#You need to know your data!
 #min_row : Which row to start on
 #max_col : Number of coluns to read
 #max_row : Number of rows to read
@@ -43,7 +43,6 @@ for row in currSheet.iter_rows(min_row = 2, max_col = 3, max_row = 181):
     #Read first column value for current row
     #data is returned as a list
     classname =row[0].value
-
     studentinfo = row[1].value
     #Split the data based upon the underscore symbol
     studentinfo = studentinfo.split('_')
@@ -55,22 +54,19 @@ for row in currSheet.iter_rows(min_row = 2, max_col = 3, max_row = 181):
     firstname = studentinfo[0]
     lastname = studentinfo[1]
     studentid = studentinfo[2] 
-
     grade = row[2].value
 
     #next open the respective sheet and start copying over the data
-    #select algebra and paste the algebra info
     if classname not in newBook.sheetnames:
         newSheet = newBook.create_sheet(title=classname)
         # Add info to the new sheet
         newSheet.append(["Last Name", "First Name", "Student ID", "Grade"])
-        #adds all the filters to the headers of each sheet
+        # adds all the filters to the headers of each sheet
         newSheet.auto_filter.ref = "a1:d1"
     else:
         newSheet = newBook[classname]
     #adds the data to the new sheet
     newSheet.append([lastname, firstname, studentid, grade])
-
 
 #adds formulas table to each sheet
 for sheet in newBook.sheetnames:
@@ -93,7 +89,7 @@ for sheet in newBook.sheetnames:
     currentSheet["G1"] = "Value"
     currentSheet["G2"] = "=MAX(D2:D" + str(currentSheet.max_row) + ")"
     currentSheet["G3"] = "=MIN(D2:D" + str(currentSheet.max_row) + ")"
-    currentSheet["G4"] = "=MEAN(D2:D" + str(currentSheet.max_row) + ")"
+    currentSheet["G4"] = "=AVERAGE(D2:D" + str(currentSheet.max_row) + ")"
     currentSheet["G5"] = "=MEDIAN(D2:D" + str(currentSheet.max_row) + ")"
     currentSheet["G6"] = "=COUNT(D2:D" + str(currentSheet.max_row) + ")"
 
