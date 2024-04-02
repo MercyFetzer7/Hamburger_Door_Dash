@@ -1,3 +1,9 @@
+# Mercy Fetzer, Isabelle Turner, Luke Farley, Luke Kehl, Nathan Blickenstaff
+# Section 004
+# Using the openpyxl library, import one of the excel files. 
+# Create a new workbook, sheets for the different classes. 
+# Filter through the unorganized excel file
+# Display the information on excel in an neat and organized order
 import os
 import platform
 
