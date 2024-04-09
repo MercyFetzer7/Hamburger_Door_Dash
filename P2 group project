@@ -1,1 +1,73 @@
+import sqlalchemy
+import pandas as pd
+import matplotlib.pyplot as plot
+import openpyxl
+from sqlalchemy import create_engine, text
+import psycopg2
+
+importData = input("If you want to import data, enter 1. If you want to see summaries of stored date, enter 2. Enter any other value to exit the program. ")
+ 
+if importData == 1:  
+    # connection string to talk to the database
+    # define the connection parameters:
+    database_name = "retailsales" #is303 ?
+    db_user = "postgres"
+    db_password = "Computer123!"
+    db_host = "localhost" #this just means the database is stored on your own computer
+    db_port = "5432" # default setting
+
+    # Connect to the PostgreSQL database
+    engine = sqlalchemy.create_engine(f'postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{database_name}')
+    conn = engine.connect()
+
+    # Reads excel file and puts it into a pandas dataframe
+    dfImportedFile = pd.read_excel("Retail_Sales_Data.xlsx")
+
+    # Splitting the "name" column into "first_name" and "last_name" columns
+    dfImportedFile[['first_name', 'last_name']] = dfImportedFile["name"].str.split("-", expand=True)
+    
+    # Deleting the original "name" column
+    dfImportedFile.drop(columns=['name'], inplace=True)
+
+# make a dictionary key:product value: category
+    productCategoriesDict = {
+        'Camera': 'Technology',
+        'Laptop': 'Technology',
+        'Gloves': 'Apparel',
+        'Smartphone': 'Technology',
+        'Watch': 'Accessories',
+        'Backpack': 'Accessories',
+        'Water Bottle': 'Household Items',
+        'T-shirt': 'Apparel',
+        'Notebook': 'Stationery',
+        'Sneakers': 'Apparel',
+        'Dress': 'Apparel',
+        'Scarf': 'Apparel',
+        'Pen': 'Stationery',
+        'Jeans': 'Apparel',
+        'Desk Lamp': 'Household Items',
+        'Umbrella': 'Accessories',
+        'Sunglasses': 'Accessories',
+        'Hat': 'Apparel',
+        'Headphones': 'Technology',
+        'Charger': 'Technology'}
+    
+dfImportedFile['category'] = dfImportedFile['category'].map(productCategoriesDict)
+
+# saving the dataframe to postgres
+dfImportedFile.to_sql("sale", engine, if_exists= "replace", index= False)
+
+print("You've imported the excel file into your postgres database.")
+
+elif importData == 2: #do option 1 and option 2
+print("The following are all the categories that have been sold")
+
+sumcategory = input("Please enter the number of the category you want to see summariezed: ")
+pass
+
+else:
+print("Closing the program.")
+
+# matching categories to product
+# dfData["Category"] = dfData['product'].map(dctCat)
 
